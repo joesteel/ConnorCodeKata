@@ -74,6 +74,13 @@ class TeamsTest {
     }
 
 
+    @Test
+    void shouldCountTheGameForHugeNumberOfTeamsUsingSumFunc() {
+        Teams league = new Teams();
+        int expectedResult = 1000*999/2;
+        int actualResult = league.partitionTeamsAndPlaySum(1000);
+        assert(expectedResult == actualResult);
+    }
 
 
 }
