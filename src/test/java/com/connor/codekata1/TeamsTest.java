@@ -40,4 +40,40 @@ class TeamsTest {
     }
 
 
+    @Test
+    void shouldCountTheGameFor1TeamUsingSumFunc() {
+        Teams league = new Teams();
+        int expectedResult = 0;
+        int actualResult = league.partitionTeamsAndPlaySum(1);
+        assert(expectedResult == actualResult);
+    }
+
+    @Test
+    void shouldCountTheGameFor5TeamsUsingSumFunc() {
+        Teams league = new Teams();
+        int expectedResult = 10;
+        int actualResult = league.partitionTeamsAndPlaySum(5);
+        assert(expectedResult == actualResult);
+    }
+
+    @Test
+    void shouldCountTheGameFor10TeamsUsingSumFunc() {
+        Teams league = new Teams();
+        int expectedResult = 10*9/2;
+        int actualResult = league.partitionTeamsAndPlaySum(10);
+        assert(expectedResult == actualResult);
+    }
+
+
+    @Test
+    void shouldCountTheGameForPrimeNumberOfTeamsUsingSumFunc() {
+        Teams league = new Teams();
+        int expectedResult = 29*28/2;
+        int actualResult = league.partitionTeamsAndPlaySum(29);
+        assert(expectedResult == actualResult);
+    }
+
+
+
+
 }

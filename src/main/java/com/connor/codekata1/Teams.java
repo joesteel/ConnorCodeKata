@@ -9,7 +9,6 @@ public class Teams {
     }
 
     public int countLeagueGames(int numTeams){
-
         partitionTeamsAndPlay(numTeams);
         return counter;
     }
@@ -25,4 +24,16 @@ public class Teams {
         partitionTeamsAndPlay(lSide);
     }
 
-}
+    public int partitionTeamsAndPlaySum(int numTeamsInGroup) {
+
+        if (numTeamsInGroup <= 1) return 0;
+
+        int rSide = numTeamsInGroup / 2;
+        int lSide = numTeamsInGroup - rSide;
+
+        return rSide * lSide + (partitionTeamsAndPlaySum(rSide) + partitionTeamsAndPlaySum(lSide));
+    }
+
+
+
+    }
