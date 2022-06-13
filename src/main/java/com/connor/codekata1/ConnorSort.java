@@ -65,12 +65,37 @@ public class ConnorSort {
                 } else {
                     merged_list[i] = r_list.get(r_p++);
                 }
-            } else if (r_p >= r_list.size()) // right list is all done so just add elements from left
+            }
+            else if (r_p >= r_list.size()) // right list is all done so just add elements from left
                 merged_list[i] = l_list.get(l_p++);
             else if (l_p >= l_list.size()) // left list is all done so blast through right
                 merged_list[i] = r_list.get(r_p++);
             i++;
         }
         return Arrays.asList(merged_list);
+    }
+
+
+    public List<Integer> pivotSort(List<Integer> unsortedList){
+        List<Integer> result = new ArrayList<Integer>(unsortedList);
+        doPivotSort(result, 0, result.size()-1);
+        return result;
+    }
+
+    public void doPivotSort(List<Integer> listToSort, int intervalStart, int intervalEnd){
+        if(intervalEnd-intervalStart < 1) return;
+        int l_p = intervalStart, r_p = intervalEnd-1, pivot_index = intervalEnd;
+        int pivot = listToSort.get(pivot_index);
+        while(l_p != r_p){
+            if(listToSort.get(l_p) > pivot && listToSort.get(r_p) < pivot) Collections.swap(listToSort, l_p, r_p);
+            if(listToSort.get(l_p) < pivot) l_p ++;
+            else if(listToSort.get(r_p) > pivot && r_p > l_p) r_p --;
+        }
+        if(listToSort.get(l_p) >= pivot){
+            Collections.swap(listToSort, l_p, intervalEnd);
+            pivot_index = l_p;
+        }
+        doPivotSort(listToSort, intervalStart, pivot_index-1);
+        doPivotSort(listToSort, pivot_index+1, intervalEnd);
     }
 }
