@@ -12,7 +12,7 @@ class BitMapTest {
     void shouldSetSizeCorrectly() {
         BitMap myBitMap = new BitMap(1026);
         int size = myBitMap.getSize();
-        assert (size == 1024 / 32 + 1); //assumes 64 bit word !!
+        assert (size == 1024 / 32 + 1); 
     }
 
     @Test
