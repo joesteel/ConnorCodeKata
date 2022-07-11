@@ -39,7 +39,7 @@ class BloomFilterTest {
     }
 
     @Test
-    void shouldReturnFalseWhenNotInSet() {
+    void shouldReturnFalseWhenNothingInSet() {
         int bucket_size = 2048;
         BloomFilter bf = new BloomFilter(bucket_size);
         for (int i = 0; i < 100; i++) {
