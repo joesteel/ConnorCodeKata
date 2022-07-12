@@ -5,24 +5,24 @@ import java.util.Arrays;
 public class BloomFilter {
 
     private BitMap bitMap;
-    private double[] modifiers;
-    private int bits;
+    private double[] hash_modifiers;
+    private int number_of_bits;
     public BloomFilter(int size){
-        bits = size;
-        bitMap = new BitMap(bits);
-        modifiers = new double[]{0.5, 0.2, 0.3333}; // magic modifiers for use in the 3 hash functions
+        number_of_bits = size;
+        bitMap = new BitMap(number_of_bits);
+        hash_modifiers = new double[]{0.5, 0.2, 0.3333}; // magic modifiers for use in the 3 hash functions
     }
 
     public void addElementToSet(int element){
-        Arrays.stream(modifiers).forEach(x -> {
-            int hash = hash(element, bits, x);
+        Arrays.stream(hash_modifiers).forEach(x -> {
+            int hash = hash(element, number_of_bits, x);
             bitMap.setBit(hash, true);
         });
     }
 
     boolean setMayContainElement(int element) {
-        int matches = Arrays.stream(modifiers).mapToInt(x-> bitMap.getBit(hash(element, bits, x))).sum();
-        return matches == modifiers.length;
+        int matches = Arrays.stream(hash_modifiers).mapToInt(x-> bitMap.getBit(hash(element, number_of_bits, x))).sum();
+        return matches == hash_modifiers.length;
     }
 
     /*
