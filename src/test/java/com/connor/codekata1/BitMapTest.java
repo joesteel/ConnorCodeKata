@@ -114,8 +114,7 @@ class BitMapTest {
                     System.out.printf("failure at input: %d at word: %d with exact position: %d int value %d\n", i, randomBit / 32, randomBit % 32, myBitMap.asIntArray()[randomBit / 32]);
                     assertTrue (false);
                 }
-            }
-           else {
+            } else {
                 if (myBitMap.asIntArray()[randomBit / 32] != (int) Math.pow(2, (randomBit % 32))) {
                     System.out.printf("failure at input: %d at word: %d with exact position: %d int value %d\n", i, randomBit / 32, randomBit % 32, myBitMap.asIntArray()[randomBit / 32]);
                     assertTrue (false);
