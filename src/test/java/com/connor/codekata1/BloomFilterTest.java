@@ -20,8 +20,8 @@ class BloomFilterTest {
             System.out.println("Expected result = " + expected_result);
             for(int j = 0; j< iterations; j++){ // brute force check that it's consistent iterations times
                 int actual = bf.hash(i, bucket_size, 0.5);
-                assert(actual < bucket_size);
-                assert(actual == expected_result);
+                assertTrue(actual < bucket_size);
+                assertTrue(actual == expected_result);
             }
         }
     }
@@ -34,7 +34,7 @@ class BloomFilterTest {
             Random rand = new Random();
             int element = rand.nextInt(2048);
             bf.addElementToSet(element);
-            assert (bf.setMayContainElement(element));
+            assertTrue (bf.setMayContainElement(element));
         }
     }
 
@@ -45,7 +45,7 @@ class BloomFilterTest {
         for (int i = 0; i < 100; i++) {
             Random rand = new Random();
             int element = rand.nextInt(2048);
-            assert (bf.setMayContainElement(element) == false);
+            assertTrue (bf.setMayContainElement(element) == false);
         }
     }
 }

@@ -7,20 +7,20 @@ public class BloomFilter {
     private BitMap bitMap;
     private double[] hash_modifiers;
     private int number_of_bits;
-    public BloomFilter(int size){
+    public BloomFilter(final int size){
         number_of_bits = size;
         bitMap = new BitMap(number_of_bits);
         hash_modifiers = new double[]{0.5, 0.2, 0.3333}; // magic modifiers for use in the 3 hash functions
     }
 
-    public void addElementToSet(int element){
+    public void addElementToSet(final int element){
         Arrays.stream(hash_modifiers).forEach(x -> {
             int hash = hash(element, number_of_bits, x);
             bitMap.setBit(hash, true);
         });
     }
 
-    boolean setMayContainElement(int element) {
+    public boolean setMayContainElement(final int element) {
         int matches = Arrays.stream(hash_modifiers).mapToInt(x-> bitMap.getBit(hash(element, number_of_bits, x))).sum();
         return matches == hash_modifiers.length;
     }
@@ -32,7 +32,7 @@ public class BloomFilter {
      but whatever... this is fine for now
      */
 
-    public int hash(int key, int bucketSize, double modifier ){
+    public int hash(final int key, final int bucketSize, final double modifier ){
         /*
         A = 0.5*(sqrt(5) - 1)
         s = floor(A * 2^w)

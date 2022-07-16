@@ -12,7 +12,7 @@ class BitMapTest {
     void shouldSetSizeCorrectly() {
         BitMap myBitMap = new BitMap(1026);
         int size = myBitMap.getSize();
-        assert (size == 1024 / 32 + 1);
+        assertTrue (size == 1024 / 32 + 1);
     }
 
     @Test
@@ -23,13 +23,13 @@ class BitMapTest {
         for (int i = 0; i <= 31; i++) {
             if (myBitMap.getBit(i) != 1) {
                 System.out.println("Failure at " + i);
-                assert (false);
+                assertTrue (false);
             }
         }
         for (int i = 32; i <= 63; i++) {
             if (myBitMap.getBit(i) != 0) {
                 System.out.println("Failure at " + i);
-                assert (false);
+                assertTrue (false);
             }
         }
     }
@@ -46,19 +46,19 @@ class BitMapTest {
 
             if (myBitMap.getBit(i) != 1) {
                 System.out.println("Failure at " + i);
-                assert (false);
+                assertTrue (false);
             }
             // make sure it's not messed up the other bits
             for (int j = i + 1; j < 64; j++) {
                 if (myBitMap.getBit(j) != 0) {
                     System.out.println("Failure has overwritten subsequent element " + i);
-                    assert (false);
+                    assertTrue (false);
                 }
             }
             for (int k = i - 1; k >= 0; k--) {
                 if (myBitMap.getBit(k) != 1) {
                     System.out.println("Has overwritten previous element " + i);
-                    assert (false);
+                    assertTrue (false);
                 }
             }
         }
@@ -68,7 +68,7 @@ class BitMapTest {
     @Test
     void shouldSetSpecifiedPositionsToZeroCorrectly() {
         BitMap myBitMap = new BitMap(new int[]{0xFFFFFFFF, 0xFFFFFFFF});
-        // so every position in the first 32 is a 1 and everything position in the next 64 is a 0
+        // all 64 bits initialized to 1
         myBitMap.printContents();
         for (int i = 0; i < 64; i++) {
             myBitMap.setBit(i, false);
@@ -76,19 +76,19 @@ class BitMapTest {
 
             if (myBitMap.getBit(i) != 0) {
                 System.out.println("Failure at " + i);
-                assert (false);
+                assertTrue (false);
             }
             // make sure it's not messed up the other bits
             for (int j = i + 1; j < 64; j++) {
                 if (myBitMap.getBit(j) != 1) {
                     System.out.println("Failure has overwritten subsequent element " + i);
-                    assert (false);
+                    assertTrue (false);
                 }
             }
             for (int k = i - 1; k >= 0; k--) {
                 if (myBitMap.getBit(k) != 0) {
                     System.out.println("Has overwritten previous element " + i);
-                    assert (false);
+                    assertTrue (false);
                 }
             }
         }
@@ -112,13 +112,13 @@ class BitMapTest {
             if(randomBit%32 == 31) {
                 if(myBitMap.asIntArray()[randomBit / 32] != -2147483648){
                     System.out.printf("failure at input: %d at word: %d with exact position: %d int value %d\n", i, randomBit / 32, randomBit % 32, myBitMap.asIntArray()[randomBit / 32]);
-                    assert (false);
+                    assertTrue (false);
                 }
             }
            else {
                 if (myBitMap.asIntArray()[randomBit / 32] != (int) Math.pow(2, (randomBit % 32))) {
                     System.out.printf("failure at input: %d at word: %d with exact position: %d int value %d\n", i, randomBit / 32, randomBit % 32, myBitMap.asIntArray()[randomBit / 32]);
-                    assert (false);
+                    assertTrue (false);
                 }
             }
         }
