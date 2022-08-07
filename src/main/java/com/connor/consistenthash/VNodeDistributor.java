@@ -11,5 +11,3 @@ public interface VNodeDistributor {
     abstract int firstTimeDistributeVNodesToServers(final int totalVNodes, HashMap<Integer, ArrayList<Integer>> serverMap);
     abstract int reBalanceExistingVNodesAcrossServers(final int totalVNodes, HashMap<Integer, ArrayList<Integer>> serverMap);
 }
-
-

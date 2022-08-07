@@ -10,15 +10,6 @@ public class SimpleVNodeDistributor implements VNodeDistributor{
     SimpleVNodeDistributor() {
     }
 
-    /*
-    todo
-     add a few more tests for add server and removeServer
-     then make a distributor implementation that keeps a list of active server Ids
-      - right now this one just assumes if the serverMap is of size n we have serverId:0, serverId:1, serverId:2... serverId:n-1 active servers
-     once we have a list of servers in rotation then we can add and remove specific serverIds
-     as well as rebalance taking into account which ones are active
-     */
-
     public int addServer(final int serverId, HashMap<Integer, ArrayList<Integer>> serverMap){
         if(serverId != serverMap.size()) {
             System.out.println("Can only support adding new server with ServerId: " + serverMap.size());
