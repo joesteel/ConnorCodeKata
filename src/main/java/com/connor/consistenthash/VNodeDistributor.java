@@ -8,8 +8,8 @@ public interface VNodeDistributor {
     public static int FAILURE = 400;
     abstract int addServer(int serverId, HashMap<Integer, ArrayList<Integer>> serverMap);
     abstract int removeServer(int serverId, HashMap<Integer, ArrayList<Integer>> serverMap);
-    abstract int firstTimeDistributeVNodesToServers(HashMap<Integer, ArrayList<Integer>> serverMap, int VNodes);
-    abstract int reBalanceExistingVNodesAcrossServers(HashMap<Integer, ArrayList<Integer>> serverMap);
+    abstract int firstTimeDistributeVNodesToServers(final int totalVNodes, HashMap<Integer, ArrayList<Integer>> serverMap);
+    abstract int reBalanceExistingVNodesAcrossServers(final int totalVNodes, HashMap<Integer, ArrayList<Integer>> serverMap);
 }
 
 

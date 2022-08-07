@@ -46,15 +46,10 @@ class HashManagerTest {
         String key = "hello I am going to try to get myself assigned to the same VNode consistently";
         int range_size = 25, max_size = 2000;
         HashManager hm =  new HashManager(range_size, max_size);
-        try {
-            int base_line_hash = hm.getVNode(key);
-            for (int i = 0; i < 1000; i++) {
-                assertTrue(hm.getVNode(key) == base_line_hash);
-                System.out.println(base_line_hash);
-            }
-        } catch(NoSuchAlgorithmException nsae) {
-            System.out.println(nsae.getMessage());
-            assertTrue(false);
+        int base_line_hash = hm.getVNode(key);
+        for (int i = 0; i < 1000; i++) {
+            assertTrue(hm.getVNode(key) == base_line_hash);
+            System.out.println(base_line_hash);
         }
     }
 
@@ -64,14 +59,9 @@ class HashManagerTest {
         int range_size = 25, max_size = 2000, test_size = 1000;;
         HashManager hm =  new HashManager(range_size, max_size);
         for(int i = 0; i< test_size; i++){
-            try {
-                int base_line_hash = hm.getVNode(string_builder.append(i).toString());
-                assertTrue( base_line_hash <= hm.numVNodes());
-                System.out.println(base_line_hash);
-            } catch(NoSuchAlgorithmException nsae) {
-                System.out.println(nsae.getMessage());
-                assertTrue(false);
-            }
+            int base_line_hash = hm.getVNode(string_builder.append(i).toString());
+            assertTrue( base_line_hash <= hm.numVNodes());
+            System.out.println(base_line_hash);
         }
     }
 
