@@ -17,20 +17,19 @@ public class ConsistentHashRingManager {
         serverList = new ArrayList<Integer>();
         for(int serverId = 0; serverId < numServers; serverId++ ){
             serverList.add(serverId);
-        }
+        } // assuming contiguous serverIds to start with
         distributor = VNodeDistributorFactory.getDistributor("SIMPLE");
-        serverMap = initializeServers(numServers);
+        serverMap = initializeServers();
         distributor.firstTimeDistributeVNodesToServers(totalVNodes, serverMap);
         hashManager = new HashManager(DEFAULT_RANGE, DEFAULT_RANGE*totalVNodes);
     }
 
     public int getServerForKey(final String key){
-        int hashingResult = hashManager.getVNode(key);
-        if(hashingResult != HashManager.HASHING_FAILURE) {
-            int[] vNodes = createVNodeToServerMapping();
-            return vNodes[hashingResult];
-        }
-        else return HashManager.HASHING_FAILURE;
+        int vNode = hashManager.getVNode(key);
+        if(vNode != HashManager.HASHING_FAILURE) {
+            int[] vNodeServers = createVNodeToServerMapping();
+            return vNodeServers[vNode];
+        } else return HashManager.HASHING_FAILURE;
     }
 
     public int addServerToRotation(final int serverId){
@@ -63,12 +62,12 @@ public class ConsistentHashRingManager {
         return vNodeServers;
     }
 
-    private HashMap<Integer, ArrayList<Integer>> initializeServers(int numServers){
+    private HashMap<Integer, ArrayList<Integer>> initializeServers(){
         HashMap<Integer, ArrayList<Integer>> serverMap = new HashMap<Integer, ArrayList<Integer>>();
-        for(int i = 0; i<numServers; i++){
+        serverList.forEach(server -> {
             ArrayList<Integer> list_of_vNodes_for_a_server = new ArrayList<Integer>();
-            serverMap.put(i, list_of_vNodes_for_a_server);
-        }
+            serverMap.put(server, list_of_vNodes_for_a_server);
+        });
         return serverMap;
     }
 
