@@ -25,14 +25,15 @@ class ConsistentHashRingManagerTest {
         int newServerId = 9;
         assertEquals(VNodeDistributor.SUCCESS, chm.addServerToRotation(newServerId));
         assertEquals(chm.getServerCount(), 10);
-        int numberOfTimesLoadWasDistributedToServer10 = 0;
+        int numberOfTimesLoadWasDistributedToNewServer = 0;
         StringBuilder builder = new StringBuilder(key);
-        for(int i = 0; i < 1000; i++){
+        int totalIterations = 1000;
+        for(int i = 0; i < totalIterations; i++){
             if(chm.getServerForKey(builder.append(i).toString()) == newServerId){
-                numberOfTimesLoadWasDistributedToServer10++;
+                numberOfTimesLoadWasDistributedToNewServer++;
             }
         }
-        assertTrue(numberOfTimesLoadWasDistributedToServer10 > 5);
+        assertTrue(numberOfTimesLoadWasDistributedToNewServer > 5);
     }
 
 
@@ -46,7 +47,8 @@ class ConsistentHashRingManagerTest {
         assertEquals(chm.getServerCount(), 9);
         int numberOfTimesLoadWasDistributedToServer9 = 0;
         StringBuilder builder = new StringBuilder(key);
-        for(int i = 0; i < 1000; i++){
+        int totalIterations = 1000;
+        for(int i = 0; i < totalIterations; i++){
             assertFalse(chm.getServerForKey(builder.append(i).toString()) == serverToRemove);{
             }
         }
