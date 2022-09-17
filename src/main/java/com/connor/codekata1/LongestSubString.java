@@ -13,7 +13,7 @@ public class LongestSubString {
                 set.remove(chars[start]);
                 start++;
             }
-            else {
+            else{
                 set.add(chars[end]);
                 end++;
             }
