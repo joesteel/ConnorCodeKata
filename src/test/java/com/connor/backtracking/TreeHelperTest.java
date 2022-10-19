@@ -46,7 +46,6 @@ class TreeHelperTest {
         assertTrue(TreeHelper.serializeTree(tree, Objects::toString).equals(expectedResult));
     }
 
-
     @Test
     void shouldSerializeAndDeSerializeATreeOfHeightThree() {
         String expectedResult = "10 1 12 1 15 0 ";
