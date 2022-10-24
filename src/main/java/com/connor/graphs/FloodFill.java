@@ -1,9 +1,8 @@
 package com.connor.graphs;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class FloodFill {
@@ -66,5 +65,16 @@ public class FloodFill {
             return true;
         }
 
+    }
+
+    public static class KnightMinMoves {
+        public static int getKnightShortestPath(int x, int y) {
+            HashSet<String> visited = new HashSet<>();
+            return 0;
+        }
+
+        public static int bfs(com.connor.graphs.Coordinate startingPoint, HashSet<String> visited){
+            return 0;
+        }
     }
 }

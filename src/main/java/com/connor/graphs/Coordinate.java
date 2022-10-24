@@ -44,6 +44,16 @@ public class Coordinate {
         return neighbours;
     }
 
+    public List<Coordinate> getMoves(){
+        int[] neighbourRows = new int[]{4, 4,-4, -4, 1, 1, -1, -1};
+        int[] neighbourCols = new int[]{1,-1, 1, -1, 4, -4, 4, -4};
+        List<Coordinate> newPositions = new ArrayList<>();
+        for(int i = 0; i < neighbourRows.length; i++){
+            newPositions.add(new Coordinate(r+neighbourRows[i], c+neighbourCols[i]));
+        }
+        return newPositions;
+    }
+
     public boolean isValid(List<List<Integer>> grid){
         int maxRow = grid.size()-1;
         int maxCol = grid.get(0).size()-1;
@@ -56,5 +66,22 @@ public class Coordinate {
         return Integer.toString(r) + " " + Integer.toString(c);
     }
 
+    @Override
+    public int hashCode() {
+        String serialised = this.serialize();
+        int result = serialised.hashCode();
+        return result;
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        else if (!(o instanceof Coordinate))
+            return false;
+        else{
+            Coordinate other = (Coordinate)o;
+            return this.serialize().equals(other.serialize());
+        }
+    }
 }
