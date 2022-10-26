@@ -58,7 +58,7 @@ public class Coordinate {
         int maxRow = grid.size()-1;
         int maxCol = grid.get(0).size()-1;
         boolean result = true;
-        if(this.c < 0 || this.r > maxCol || this.r < 0 || this.r > maxRow) result = false;
+        if(this.c < 0 || this.c > maxCol || this.r < 0 || this.r > maxRow) result = false;
         return result;
     }
 
