@@ -1,4 +1,4 @@
-package com.connor.codekata1;
+package com.connor.sort;
 
 import java.util.*;
 

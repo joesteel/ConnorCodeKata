@@ -1,11 +1,9 @@
 package com.connor.codekata1;
 
+import com.connor.sort.ConnorSort;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Array;
 import java.util.*;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ConnorSortTest {
 

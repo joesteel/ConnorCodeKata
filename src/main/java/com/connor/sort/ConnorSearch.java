@@ -1,4 +1,4 @@
-package com.connor.codekata1;
+package com.connor.sort;
 
 import javax.management.remote.rmi._RMIConnection_Stub;
 import java.util.*;
