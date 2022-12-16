@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -68,11 +67,20 @@ class TrappingRainWaterTest {
         assertEquals(5, result);
     }
 
+
     @Test
-    void someHardTestIDontUnderstand() {
-        String input =  "4 0 2 3";
+    void someHardTestIDontUnderstand_1() {
+        String input =  "3 0 5 1 6 3 3 4";
         List<Integer> elevations = Arrays.stream(input.split(" ")).map(s->Integer.valueOf(s)).collect(Collectors.toList());
         int result = TrappingRainWater.trappingRainWater(elevations);
-        assertEquals(3+1, result);
+        assertEquals(3+4+1+1, result);
+    }
+
+    @Test
+    void someHardTestIDontUnderstand() {
+        String input =  "3 0 5 1 6 3 3 4 0 2 3";
+        List<Integer> elevations = Arrays.stream(input.split(" ")).map(s->Integer.valueOf(s)).collect(Collectors.toList());
+        int result = TrappingRainWater.trappingRainWater(elevations);
+        assertEquals(3+4+1+1+3+1, result);
     }
 }
