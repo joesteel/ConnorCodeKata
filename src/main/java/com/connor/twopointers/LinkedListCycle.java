@@ -14,12 +14,12 @@ public class LinkedListCycle {
         public Node<T> next;
     }
 
-    public Node<Integer> deserializeList(String list){
+    public static Node<Integer> deserializeList(String list){
         Iterator<String> itr = Arrays.stream(list.split(" ")).iterator();
         return buildList(itr, Integer::parseInt);
     }
 
-    public Node<Integer> buildList(Iterator<String> itr, Function<String, Integer> f){
+    public static Node<Integer> buildList(Iterator<String> itr, Function<String, Integer> f){
         Node<Integer> node = null;
         if(itr.hasNext()){
             node = new Node<>(f.apply(itr.next()));
@@ -29,7 +29,15 @@ public class LinkedListCycle {
     }
 
     public static boolean hasCycle(Node<Integer> nodes) {
-        // WRITE YOUR BRILLIANT CODE HERE
+        Node<Integer> slow = nodes;
+        Node<Integer> fast = nodes;
+        int ctr = 1;
+        while(fast != null){
+            fast = fast.next;
+            if(ctr % 2 == 0) slow = slow.next;
+            if(slow == fast) return true;
+            ctr++;
+        }
         return false;
     }
 }
