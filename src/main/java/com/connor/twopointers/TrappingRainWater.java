@@ -7,7 +7,6 @@ public class TrappingRainWater {
     public static int trappingRainWater(List<Integer> elevations) {
         int result = 0, leftPtr = 0, rightPtr = 1;
         boolean trapWindowOpen = false;
-
         while(rightPtr < elevations.size()){
             int leftVal = elevations.get(leftPtr).intValue();
             int rightVal = elevations.get(rightPtr).intValue();
