@@ -10,7 +10,7 @@ public class CoinChangeII {
 
     public static int coinGame(List<Integer> coins, int amount, String type) {
         if(type.toLowerCase().equals("top down")) return coinGameTD(coins, amount);
-        else return 0;
+        else return coinGameBU(coins, amount);
     }
 
     public static int coinGameTD(List<Integer> coins, int amount){
@@ -37,5 +37,24 @@ public class CoinChangeII {
 
         dp[start][currentSum] = result;
         return result;
+    }
+
+    public static int coinGameBU(List<Integer> coins, int target){
+        int n = coins.size();
+        int[][] dp = new int[n+1][target+1];
+        for(int i = 0; i<dp.length; i++){
+            Arrays.fill(dp[i],0);
+        }
+        dp[0][0] = 1;
+        for(int i = 1; i < dp.length; i++){
+            for(int s = 0; s<target+1; s++){
+                dp[i][s] = dp[i-1][s];
+                if(s - coins.get(i-1) >= 0){
+                    dp[i][s] += dp[i][s - coins.get(i-1)];
+                }
+            }
+        }
+
+        return dp[n][target];
     }
 }
