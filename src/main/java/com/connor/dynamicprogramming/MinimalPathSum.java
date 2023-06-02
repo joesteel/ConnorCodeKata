@@ -42,7 +42,24 @@ public class MinimalPathSum {
     }
 
     public static int minPathSumBO(List<List<Integer>> grid){
-        return 0;
+        int rows = grid.size(), cols = grid.get(0).size();
+        int[][] state = new int[rows][cols];
+
+        for(int i = 0; i < cols; i++){
+            for(int j = 0; j < rows; j++){
+                if(i == 0 && j == 0) {
+                    state[i][j] = grid.get(i).get(j);
+                } else if (i == 0) {
+                    state[i][j] = grid.get(i).get(j) + state[i][j-1];
+                } else if (j == 0) {
+                    state[i][j] = grid.get(i).get(j) + state[i-1][j];
+                } else {
+                    state[i][j] = grid.get(i).get(j) + Math.min(state[i][j-1], state[i-1][j]);
+                }
+            }
+        }
+
+        return state[rows-1][cols-1];
     }
 
 }
