@@ -3,7 +3,6 @@ package com.connor.leeteasy;
 public class LongestCommonPrefix {
 
     public static String longestCommonPrefix(String[] strs) {
-
         int prefixEnd = strs[0].length();
         for(int i = 1; i < strs.length; i++){
             prefixEnd = Math.min(prefixEnd, strs[i].length());
