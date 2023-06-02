@@ -32,8 +32,7 @@ public class MinimalPathSum {
 
     public static int dfs(List<List<Integer>> grid, int row, int col, int[][] state){
         if(row == grid.size()-1 && col == grid.get(row).size()-1) return grid.get(row).get(col);
-        if(row >= grid.size()) return Integer.MAX_VALUE;
-        if(col >= grid.get(row).size()) return Integer.MAX_VALUE;
+        if(row >= grid.size() || col >= grid.get(row).size()) return Integer.MAX_VALUE;
 
         if(state[row][col] != -1) return state[row][col];
         int result = grid.get(row).get(col) + Math.min(dfs(grid, row+1, col, state), dfs(grid, row, col+1, state));
