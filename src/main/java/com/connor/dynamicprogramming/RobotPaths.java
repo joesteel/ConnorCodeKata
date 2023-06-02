@@ -25,4 +25,18 @@ public class RobotPaths {
         return result;
     }
 
+
+    public static int uniquePathsBottomUp(int m, int n) {
+       int[][] state = new int[m][n];
+       Arrays.fill(state[0], 1); // only 1 way to get to every position on the top row
+
+       for (int i = 1; i < m; i ++){
+           for(int j = 0; j < n; j++) {
+               state[i][j] = state[i-1][j];
+               if(j >= 1) state[i][j] += state[i][j-1];
+           }
+       }
+       return state[m-1][n-1];
+    }
+
 }
