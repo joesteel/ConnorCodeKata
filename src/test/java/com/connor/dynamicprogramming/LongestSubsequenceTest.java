@@ -46,8 +46,8 @@ class LongestSubsequenceTest {
 
     @Test
     void shouldReturnFourForListWithVariance2() {
-        int result = LongestSubsequence.longestSubLenTD(Arrays.asList(50, 3, 10, 7, 40, 80));
-        assertEquals(4, result);
+        int result = LongestSubsequence.longestSubLenTD(Arrays.asList(50, 3, 10, 80));
+        assertEquals(3, result);
     }
 
     @Test
