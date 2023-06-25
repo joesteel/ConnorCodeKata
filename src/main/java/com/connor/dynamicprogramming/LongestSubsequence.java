@@ -13,21 +13,24 @@ public class LongestSubsequence {
     public static int longestSubLenTD(List<Integer> nums) {
         int[] state = new int[nums.size()];
         Arrays.fill(state, Integer.MIN_VALUE);
-        return dfs(nums, -1, 0, 0, state);
+        int result = 0;
+        for(int i = 0; i < nums.size(); i++){
+            result = Math.max(result, dfs(nums, i, state));
+        }
+        return result;
     }
 
-    public static int dfs(List<Integer> nums, int lastUsedNum, int currentLevel, int subsequenceCount, int[] state) {
-        if (currentLevel == nums.size()) return subsequenceCount;
-        int left = 0;
+    public static int dfs(List<Integer> nums, int position, int[] state) {
+        if(position >= nums.size()-1) return 1;
 
-        if(state[currentLevel] <= subsequenceCount) {
-            if (nums.get(currentLevel) > lastUsedNum) {
-                left = dfs(nums, nums.get(currentLevel), currentLevel + 1, subsequenceCount + 1, state);
-                state[currentLevel] = subsequenceCount+1;
-            }
+        if(state[position] != Integer.MIN_VALUE) return state[position];
+        int result = 0;
+        for(int i = position+1; i < nums.size(); i++) {
+            if(nums.get(i) > nums.get(position)) result = Math.max(result, dfs(nums, i, state));
         }
-        int right = dfs(nums, lastUsedNum, currentLevel + 1, subsequenceCount, state);
-        return Math.max(left, right);
+        result++;
+        state[position] = result;
+        return result;
     }
 
 }
