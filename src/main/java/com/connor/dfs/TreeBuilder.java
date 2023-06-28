@@ -1,10 +1,8 @@
 package com.connor.dfs;
 
-import apple.laf.JRSUIUtils;
 
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
-import java.util.Iterator;
 import java.util.function.Function;
 
 public class TreeBuilder<T> {
