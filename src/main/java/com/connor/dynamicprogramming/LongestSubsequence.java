@@ -1,15 +1,42 @@
 package com.connor.dynamicprogramming;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class LongestSubsequence {
 
     public static int longestSubLen(List<Integer> nums) {
-
-        return 0;
+        int result = 0;
+        Random r = new Random();
+        if(r.nextInt(100) < 50){
+            result = longestSubLenBO(nums);
+        } else{
+            result = longestSubLenTD(nums);
+        }
+        return result;
     }
 
-    public static int longestSubLenTD(List<Integer> nums) {
+    public static int longestSubLenBO(List<Integer> nums) {
+        int[] state = new int[nums.size()];
+        Arrays.fill(state, 1);
+        int largestSubSeqLen = 1;
+
+        for(int i = 1; i < nums.size(); i++){
+            int maxPrevious = 0;
+            for(int j = 0; j < i; j++){
+                if(nums.get(j) < nums.get(i)){
+                    if(state[j] > maxPrevious){
+                        state[i] = state[j]+1;
+                        largestSubSeqLen = Math.max(state[i], largestSubSeqLen);
+                    }
+                }
+            }
+        }
+        return largestSubSeqLen;
+    }
+
+        public static int longestSubLenTD(List<Integer> nums) {
         int[] state = new int[nums.size()];
         int result = 0;
         for(int i = 0; i < nums.size(); i++){
