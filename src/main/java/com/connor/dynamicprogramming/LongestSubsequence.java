@@ -1,5 +1,6 @@
 package com.connor.dynamicprogramming;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -15,6 +16,7 @@ public class LongestSubsequence {
         }
         return result;
     }
+
 
     public static int longestSubLenBO(List<Integer> nums) {
         int[] state = new int[nums.size()];
@@ -56,5 +58,4 @@ public class LongestSubsequence {
         state[position] = result;
         return result;
     }
-
 }
