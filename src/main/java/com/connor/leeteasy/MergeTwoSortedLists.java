@@ -12,28 +12,38 @@ public class MergeTwoSortedLists {
     }
 
     public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        ListNode result = new ListNode();
-        ListNode resPtr = result;
+        ListNode head = new ListNode();
+        ListNode resPtr = head;
         while(list1 != null && list2 != null) {
             if (list1.val < list2.val) {
-                resPtr.next = new ListNode(list1.val);
+                resPtr.next = list1;
                 list1 = list1.next;
             } else {
-                resPtr.next = new ListNode(list2.val);
+                resPtr.next = list2;
                 list2 = list2.next;
             }
             resPtr = resPtr.next;
         }
-        while(list1 != null) {
-            resPtr.next = new ListNode(list1.val);
-            list1 = list1.next;
-            resPtr = resPtr.next;
+        if (list1 != null) resPtr.next = list1;
+        else resPtr.next = list2;
+
+        return head.next;
+    }
+
+    public static ListNode mergeTwoListsCopiedFromL33tSubmission(ListNode list1, ListNode list2) {
+        if(list1 != null && list2 != null) {
+            if(list1.val < list2.val) {
+                list1.next = mergeTwoListsCopiedFromL33tSubmission(list1.next, list2);
+                return list1;
+
+            } else {
+                list2.next = mergeTwoListsCopiedFromL33tSubmission(list1, list2.next);
+                return list2;
+            }
         }
-        while(list2 != null) {
-            resPtr.next = new ListNode(list2.val);
-            list2 = list2.next;
-            resPtr = resPtr.next;
-        }
-        return result.next;
+        if(list1 == null)
+            return list2;
+        return list1;
+
     }
 }

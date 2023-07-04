@@ -22,4 +22,13 @@ class MergeTwoSortedListsTest {
         assertEquals(1, result.next.val);
     }
 
+    @Test
+    void shouldMergeAListWithSimpleList_CheatVersion() {
+        MergeTwoSortedLists.ListNode list1 = new MergeTwoSortedLists.ListNode(0);
+        MergeTwoSortedLists.ListNode list2 = new MergeTwoSortedLists.ListNode(1);
+        MergeTwoSortedLists.ListNode result = MergeTwoSortedLists.mergeTwoListsCopiedFromL33tSubmission(list1, list2);
+        assertEquals(0, result.val);
+        assertEquals(1, result.next.val);
+    }
+
 }
