@@ -15,7 +15,4 @@ public class DivisorGame {
         }
         return state[n];
     }
-
-
-
 }

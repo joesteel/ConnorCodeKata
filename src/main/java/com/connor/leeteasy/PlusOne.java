@@ -18,7 +18,7 @@ public class PlusOne {
         // buffer overflow
         int[] result = new int[digits.length + 1];
         result[0] = 1;
-        System.arraycopy(digits, 0, result, 1, result.length - 1);
+        System.arraycopy(digits, 0, result, 1, result.length - 1); // don't actually need this as you can only get a 100* here
         return result;
     }
 }
