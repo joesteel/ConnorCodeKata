@@ -12,14 +12,14 @@ public class ListNode {
 
     public static ListNode serialiseList(String s) {
          Iterator<String> itr = Arrays.stream(s.split(" ")).iterator();
-         return getNodes(itr);
+         return createNode(itr);
     }
 
-    private static ListNode getNodes(Iterator<String> itr){
+    private static ListNode createNode(Iterator<String> itr){
         ListNode node = null;
          if (itr.hasNext()) {
              node = new ListNode(Integer.parseInt(itr.next()));
-             node.next = getNodes(itr);
+             node.next = createNode(itr);
          }
          return node;
     }
