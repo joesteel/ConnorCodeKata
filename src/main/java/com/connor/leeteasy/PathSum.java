@@ -11,7 +11,6 @@ public class PathSum {
         pathSum += node.val;
         if(node.left == null && node.right == null) return pathSum == target;
 
-        if (dfs(node.left, target, pathSum)) return true;
-        else return  dfs(node.right, target, pathSum);
+        return (dfs(node.left, target, pathSum)) || dfs(node.right, target, pathSum);
     }
 }
