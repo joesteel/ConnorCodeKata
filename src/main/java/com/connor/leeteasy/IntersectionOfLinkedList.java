@@ -23,10 +23,12 @@ public class IntersectionOfLinkedList {
             BPtr = BPtr.next;
         }
 
-        while(APtr == BPtr){
-            result = APtr;
+        while(!stackA.isEmpty() && !stackB.isEmpty()){
             APtr = stackA.pop();
             BPtr = stackB.pop();
+            if(APtr == BPtr){
+                result = APtr;
+            } else break;
         }
         return result;
     }
