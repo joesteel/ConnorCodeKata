@@ -1,33 +1,34 @@
 package com.connor.leeteasy;
 
+import java.util.List;
+import java.util.Stack;
+
 public class IntersectionOfLinkedList {
 
     public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        ListNode reverseHeadA = reverseList(headA);
-        ListNode reverseHeadB = reverseList(headB);
         ListNode result = null;
-        while(reverseHeadA != null && reverseHeadB != null){
-            if(reverseHeadA.val == reverseHeadB.val) {
-                result = reverseHeadA;
-                reverseHeadA = reverseHeadA.next;
-                reverseHeadB = reverseHeadB.next;
-            } else return result;
+
+        Stack<ListNode> stackA = new Stack<>();
+        ListNode APtr = headA;
+
+        while(APtr != null){
+            stackA.push(APtr);
+            APtr = APtr.next;
+        }
+        Stack<ListNode> stackB = new Stack<>();
+        ListNode BPtr = headB;
+
+        while(BPtr != null){
+            stackB.push(BPtr);
+            BPtr = BPtr.next;
+        }
+
+        while(APtr == BPtr){
+            result = APtr;
+            APtr = stackA.pop();
+            BPtr = stackB.pop();
         }
         return result;
     }
-    
-    public static ListNode reverseList(ListNode head){
-        if(head == null || head.next == null) return head;
-        ListNode left = null;
-        ListNode middle = head;
-        ListNode right = middle;
-        while(middle != null) {
-            right = right.next;
-            middle.next = left;
-            left = middle;
-            middle = right;
-        }
 
-        return left;
-    }
 }
