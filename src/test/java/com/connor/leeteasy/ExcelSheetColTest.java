@@ -30,10 +30,22 @@ class ExcelSheetColTest {
         assertEquals("AA", result);
     }
 
+
+    @Test
+    void shouldReturnColAZ() {
+        String result = ExcelSheetCol.convertToTitle(702);
+        assertEquals("ZZ", result);
+    }
+    @Test
+    void shouldReturnColAAA() {
+        String result = ExcelSheetCol.convertToTitle(703);
+        assertEquals("AAA", result);
+    }
+
     @Test
     void shouldReturnColDoubleBA() {
         String result = ExcelSheetCol.convertToTitle(52);
-        assertEquals("BA", result);
+        assertEquals("AZ", result);
     }
 
     @Test
@@ -44,7 +56,7 @@ class ExcelSheetColTest {
 
     @Test
     void shouldReturnColDoubleAAA() {
-        String result = ExcelSheetCol.convertToTitle(703);
-        assertEquals("AAA", result);
+        String result = ExcelSheetCol.convertToTitle(704);
+        assertEquals("AAB", result);
     }
 }
