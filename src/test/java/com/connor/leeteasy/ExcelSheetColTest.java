@@ -31,8 +31,20 @@ class ExcelSheetColTest {
     }
 
     @Test
+    void shouldReturnColDoubleBA() {
+        String result = ExcelSheetCol.convertToTitle(52);
+        assertEquals("BA", result);
+    }
+
+    @Test
     void shouldReturnColDoubleZY() {
         String result = ExcelSheetCol.convertToTitle(701);
         assertEquals("ZY", result);
+    }
+
+    @Test
+    void shouldReturnColDoubleAAA() {
+        String result = ExcelSheetCol.convertToTitle(703);
+        assertEquals("AAA", result);
     }
 }
