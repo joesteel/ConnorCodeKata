@@ -30,7 +30,7 @@ public class StackUsingQ {
 
         public int top() {
             int result = this.pop();
-            activeQ().offer(result);
+            activeQ().offer(result); // concurrency risk here if multiple actors working on this object
             return result;
         }
 
