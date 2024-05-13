@@ -9,7 +9,7 @@ public class MajorityElement {
         int max = (nums.length+1)/2;
         for (int num : nums) {
             map.computeIfPresent(num, (key, sum) -> sum + 1);
-            map.computeIfAbsent(num, (key) -> 1);
+            map.putIfAbsent(num, 1);
             if (map.get(num) >= max) {
                 return num;
             }
