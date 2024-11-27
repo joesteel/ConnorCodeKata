@@ -6,7 +6,7 @@ import java.util.*;
 public class RelativeRanks {
     public static String[] findRelativeRanks(int[] score) {
         String[] result = new String[score.length];
-        int[] sortedScores = Arrays.copyOf(score, score.length);
+        int[] sortedScores = Arrays.copyOf(score, score.length); // I made a copy which is the only difference between this and fastest solutions on l33t
         Arrays.sort(sortedScores);
         Map<Integer, String> scorePositions = new HashMap<>();
         // sort the scores so we know absolute position
