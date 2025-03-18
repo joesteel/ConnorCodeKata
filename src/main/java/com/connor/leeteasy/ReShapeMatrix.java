@@ -7,7 +7,7 @@ public class ReShapeMatrix {
         int write_row = 0, write_col = 0;
 
         for (int[] read_row : mat) {
-            for (int read_col = 0; read_col < mat[0].length; read_col++) {
+            for (int read_col = 0; read_col < read_row.length; read_col++) {
                 if (write_col == c) {
                     //another way to do this is to say if write_col % c == 0 and initialize the row to -1
                     write_row++;
