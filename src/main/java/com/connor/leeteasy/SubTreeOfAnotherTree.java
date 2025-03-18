@@ -21,15 +21,14 @@ public class SubTreeOfAnotherTree {
 
     public static boolean isTreeMatch(TreeNode node, TreeNode subTreeNode){
         if(node == null && subTreeNode == null) return true;
-        if(node == null || subTreeNode == null) return false;
+        else if( node == null || subTreeNode == null || node.val != subTreeNode.val) return false;
 
-        if(node.val != subTreeNode.val) return false;
         boolean isMatch = isTreeMatch(node.left, subTreeNode.left);
         isMatch = isMatch && isTreeMatch(node.right, subTreeNode.right);
         return isMatch;
     }
 
-    // ====== using serialisation ========
+    // ========= using serialisation ============ //
     public static boolean useSerialisation(TreeNode root, TreeNode subRoot){
         if(subRoot == null) return true;
 
@@ -42,7 +41,9 @@ public class SubTreeOfAnotherTree {
     public static String postOrderList(TreeNode root, String serialisedSubRootList){
         if(root == null) return "x";
 
-        StringBuilder result = new StringBuilder(); // this means the builder will be on the stack while we process all the subnodes
+        // this means the builder object will be on the stack while we process all the sub nodes
+        // which makes this guy slow
+        StringBuilder result = new StringBuilder();
         result.append(root.val);
 
         result.append(postOrderList(root.left, serialisedSubRootList));
