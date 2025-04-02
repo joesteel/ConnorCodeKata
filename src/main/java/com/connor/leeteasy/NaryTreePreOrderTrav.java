@@ -34,4 +34,19 @@ public class NaryTreePreOrderTrav {
             dfsPreOrder(child, result);
         }
     }
+
+    public List<Integer> postorder(Node root) {
+        List<Integer> result = new ArrayList<>();
+        dfsPostOrder(root, result);
+        return result;
+    }
+
+    public void dfsPostOrder(Node node, List<Integer> result){
+        if(node == null) return;
+
+        for(Node child: node.children){
+            dfsPostOrder(child, result);
+        }
+        result.add(node.val);
+    }
 }
