@@ -25,8 +25,8 @@ public class IntToRoman {
 
 
         // put them in a list
-        int[] roman_nums = new int[]{1000,900,500,400,100,90,50,40,10,9,5,4,1};
-        String[] roman_numerals = new String[]{"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+        int[] roman_nums = {1000,900,500,400,100,90,50,40,10,9,5,4,1};
+        String[] roman_numerals = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
         // iterate over the list
             // divide the input number for each value in the map... if it divides then append the result from the map
             // if we don't divide anymore move on to next num
