@@ -6,7 +6,6 @@ import java.util.List;
 
 public class RemoveNthNodeFromList {
 
-
     public static ListNode removeNthFromEnd(ListNode head, int n) {
         return removeNthFromEnd(head, n, true);
     }
@@ -48,7 +47,7 @@ public class RemoveNthNodeFromList {
             n--;
             if (r == null) return head;
             if(r.next == null) return l.next;
-        }
+        } // open window of size n
 
         while (l != null) {
             r = r.next;
