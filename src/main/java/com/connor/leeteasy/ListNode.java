@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 public class ListNode {
-     int val;
-     ListNode next;
+     public int val;
+     public ListNode next;
      ListNode() {}
      ListNode(int val) { this.val = val; }
      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
@@ -22,5 +22,13 @@ public class ListNode {
              node.next = createNode(itr);
          }
          return node;
+    }
+
+    public static ListNode getNth(int n, ListNode head){
+         ListNode ptr = head;
+         while(--n > 0 && ptr!=null){
+             ptr = ptr.next;
+         }
+         return ptr;
     }
 }
