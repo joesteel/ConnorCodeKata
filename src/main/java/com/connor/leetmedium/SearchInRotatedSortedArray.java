@@ -12,18 +12,17 @@ public class SearchInRotatedSortedArray {
         int start = 0, end = nums.length-1;
         while(start <= end){
             int middle = start + ((end - start)/2);
-            int un_rotated_index = unRotateIndex(middle, rotation_point, nums.length);
-            if(nums[un_rotated_index] == target) return un_rotated_index;
-            else if(target > nums[un_rotated_index]) start = middle+1;
+            int rotated_index = rotateIndex(middle, rotation_point, nums.length);
+            if(nums[rotated_index] == target) return rotated_index;
+            else if(target > nums[rotated_index]) start = middle+1;
             else end = middle-1;
         }
 
         return -1;
     }
 
-    private static int unRotateIndex(int x, int rotation_point, int size){
-        int index = x+rotation_point;
-        return index%size;
+    private static int rotateIndex(int x, int rotation_point, int size){
+        return (x + rotation_point) % size;
     }
 
 }
