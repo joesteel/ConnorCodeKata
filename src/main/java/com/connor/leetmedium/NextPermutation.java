@@ -12,12 +12,7 @@ public class NextPermutation {
                     if(j < nums.length-1) sortAscending(j+1, nums.length-1, nums);
                     break;
                 }
-                if(j > 0 && nums[j+1] > nums[j]){
-                    //  we've hit a swapable couple that would take precedence over this one if we go any further break
-                    // unless we can swap the smallest one in the couple..
-                    break;
-                }
-
+                if(j > 0 && nums[j+1] > nums[j])break;
             }
         }
         if(!swaps){
