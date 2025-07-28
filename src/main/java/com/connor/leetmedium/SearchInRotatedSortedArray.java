@@ -22,7 +22,7 @@ public class SearchInRotatedSortedArray {
     }
 
     private static int unRotateIndex(int x, int rotation_point, int size){
-        int index = x+rotation_point+size;
+        int index = x+rotation_point;
         return index%size;
     }
 
