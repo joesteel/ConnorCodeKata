@@ -9,7 +9,7 @@ public class Fib {
         if(memo[n] != null) return memo[n];
         else{
             int result = fib(n-1, memo) + fib(n-2, memo);
-            memo[n] = new Integer(result);
+            // memo[n] = new Integer(result); todo - java version issues
             return result;
         }
     }

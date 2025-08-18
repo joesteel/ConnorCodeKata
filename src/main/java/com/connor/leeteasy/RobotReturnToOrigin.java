@@ -1,7 +1,6 @@
 package com.connor.leeteasy;
 
 public class RobotReturnToOrigin {
-
     public static boolean judgeCircle(String moves) {
         int x = 0, y = 0;
         for (char c : moves.toCharArray()) {
