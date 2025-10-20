@@ -21,7 +21,7 @@ public class BTreePaths {
 
         dfs(node.left, paths, path);
         dfs(node.right, paths, path);
-        path.removeLast();
+        // path.removeLast(); todo - wtf going on here
     }
 
     private static String pathToString(List<Integer> path){
