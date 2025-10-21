@@ -8,12 +8,7 @@ public class CombinationSum {
 
     public static List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> result = new ArrayList<>();
-        for(int i = 0; i< candidates.length; i++){
-            List<Integer> path = new ArrayList<>();
-            path.add(candidates[i]);
-            backtrack(candidates, target-candidates[i], result, path, i);
-            path.clear();
-        }
+        backtrack(candidates, target, result, new ArrayList<>(), 0);
         return result;
     }
 
