@@ -14,7 +14,7 @@ public class MyHashMap {
         }
     }
 
-    final private KeyValuePairNode[] buckets;
+    private final KeyValuePairNode[] buckets;
     private final static int bucketCount = 1000;
     private final static int prime = 1259;
 
@@ -37,20 +37,20 @@ public class MyHashMap {
 
     public int get(int key) {
         int bucket_index = hash(key);
-        KeyValuePairNode ptr = buckets[bucket_index];
-        for(; ptr != null; ptr = ptr.next)
-            if(ptr.key == key) return ptr.value;
+        KeyValuePairNode key_value_node_ptr = buckets[bucket_index];
+        for(; key_value_node_ptr != null; key_value_node_ptr = key_value_node_ptr.next)
+            if(key_value_node_ptr.key == key) return key_value_node_ptr.value;
         return -1;
     }
 
     public void remove(int key) {
         int bucket_index = hash(key);
-        KeyValuePairNode ptr = buckets[bucket_index];
-        if(ptr == null) return;
-        if(ptr.key == key) buckets[bucket_index] = ptr.next;
-        else for ( ; ptr.next != null; ptr = ptr.next)
-            if(ptr.next.key == key) {
-                ptr.next = ptr.next.next;
+        KeyValuePairNode key_value_node_ptr = buckets[bucket_index];
+        if(key_value_node_ptr == null) return;
+        if(key_value_node_ptr.key == key) buckets[bucket_index] = key_value_node_ptr.next;
+        else for ( ; key_value_node_ptr.next != null; key_value_node_ptr = key_value_node_ptr.next)
+            if(key_value_node_ptr.next.key == key) {
+                key_value_node_ptr.next = key_value_node_ptr.next.next;
                 return;
             }
     }
